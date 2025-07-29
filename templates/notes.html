@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}My notes{% endblock %}
+
+{% block content %}
+    <h1>My notes</h1>
+
+    {% for note in notes %}
+    <div class="note">
+        <h2>{{ note[1] }}</h2>
+        <p>{{ note[2] }}</p>
+        {% if note[3] %}
+            <img src="{{ url_for('static', filename=note[3].replace('static/', '')) }}" alt="Image for note">
+        {% endif %}
+        <br><br>
+        <a href="/edit_note/{{ note[0] }}">Edit</a>
+        <form action="/delete_note/{{ note[0] }}" method="post" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    {% else %}
+    <p>You do not have any notes.</p>
+    {% endfor %}
+{% endblock %}

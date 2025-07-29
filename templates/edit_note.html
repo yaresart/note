@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Edit note{% endblock %}
+
+{% block content %}
+    <h1>Edit note</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>Title:</label><br>
+        <input type="text" name="title" value="{{ note[1] }}" required><br><br>
+
+        <label>Content:</label><br>
+        <textarea name="content" rows="5" cols="40" required>{{ note[2] }}</textarea><br><br>
+
+        {% if note[3] %}
+            <p>Current image:</p>
+            <img src="{{ url_for('static', filename=note[3]) }}" style="max-width: 300px;"><br><br>
+        {% endif %}
+
+        <label>New image:</label><br>
+        <input type="file" name="image"><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+
+    <br>
+    <a href="/notes">Back to notes</a>
+{% endblock %}
