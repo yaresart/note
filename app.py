@@ -179,5 +179,15 @@ def edit_note(note_id):
 
 
 
+import sys
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = 5000
+
+    if len(sys.argv) > 1:
+        try:
+            port = int(sys.argv[1])
+        except ValueError:
+            print("Invalid port, using 5000")
+
+    app.run(debug=True, host="0.0.0.0", port=port)

@@ -3,25 +3,27 @@
 {% block title %}Edit note{% endblock %}
 
 {% block content %}
+<div class="container">
     <h1>Edit note</h1>
     <form method="post" enctype="multipart/form-data">
-        <label>Title:</label><br>
-        <input type="text" name="title" value="{{ note[1] }}" required><br><br>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ note[1] }}" required>
 
-        <label>Content:</label><br>
-        <textarea name="content" rows="5" cols="40" required>{{ note[2] }}</textarea><br><br>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="5" required>{{ note[2] }}</textarea>
 
         {% if note[3] %}
             <p>Current image:</p>
-            <img src="{{ url_for('static', filename=note[3]) }}" style="max-width: 300px;"><br><br>
+            <img src="{{ url_for('static', filename=note[3]) }}" style="max-width: 300px;">
         {% endif %}
 
-        <label>New image:</label><br>
-        <input type="file" name="image"><br><br>
+        <label for="image">New image:</label>
+        <input type="file" id="image" name="image">
 
         <button type="submit">Save</button>
     </form>
 
     <br>
     <a href="/notes">Back to notes</a>
+</div>
 {% endblock %}

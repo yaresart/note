@@ -1,3 +1,7 @@
 venv/
 __pycache__/
 *.pyc
+database.db
+*.sqlite3
+*.log
+.DS_Store

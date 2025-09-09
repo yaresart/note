@@ -3,6 +3,7 @@
 {% block title %}My notes{% endblock %}
 
 {% block content %}
+<div class="container">
     <h1>My notes</h1>
 
     {% for note in notes %}
@@ -10,7 +11,7 @@
         <h2>{{ note[1] }}</h2>
         <p>{{ note[2] }}</p>
         {% if note[3] %}
-            <img src="{{ url_for('static', filename=note[3].replace('static/', '')) }}" alt="Image for note">
+            <img src="{{ url_for('static', filename=note[3]) }}" alt="Image for note">
         {% endif %}
         <br><br>
         <a href="/edit_note/{{ note[0] }}">Edit</a>
@@ -21,4 +22,5 @@
     {% else %}
     <p>You do not have any notes.</p>
     {% endfor %}
+</div>
 {% endblock %}
